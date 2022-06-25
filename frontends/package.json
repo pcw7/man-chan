@@ -1,0 +1,7 @@
+{
+  "name": "man-chan",
+  "version": "0.0.1",
+  "description": "blog",
+  "main": "index.js",
+  "license": "MIT"
+}
