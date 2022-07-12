@@ -6,3 +6,5 @@ create table Member2 (
 	email varchar2(50) not null,     			 -- 이메일
 	nickName varchar2(20) not null  			 -- 별명
 )
+
+select * from member2;
