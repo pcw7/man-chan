@@ -49,7 +49,7 @@ public class MemberController {
 	}
 	
 	// 별명 중복체크
-	@RequestMapping(value= "nickNameChk", produces = "text/html;charset=utf-8")
+	@RequestMapping(value= "nickNameChk", produces = "text/html;charset=utf-8", consumes = "application/x-www-form-urlencoded; charset=utf-8")
 	@ResponseBody
 	public String nickNameChk(String nickName) {
 		String msg = "";
