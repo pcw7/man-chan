@@ -24,7 +24,7 @@
 	function nickNameChk() {
 		if (!frm.nickName.value) {
 			alert("별명을 입력한 후에 체크하세요.");
-			frm.nickName.focus();
+			// frm.nickName.focus();
 			return false;
 		}
 		$.post('nickNameChk.do', "nickName="+frm.nickName.value, function(data) {
