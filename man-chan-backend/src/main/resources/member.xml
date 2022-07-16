@@ -4,17 +4,17 @@
 <mapper namespace="memberns">
 	<!-- 아이디로 검색 -->
 	<select id="select" parameterType="string" resultType="member">
-		select * from member2 where id=#{id}
+		select * from tb_member where id=#{id}
 	</select>
 	
 	<!-- 별명 중복 체크 -->
 	<select id="selectNickName" parameterType="string" resultType="member">
-		select * from member2 where nickName=#{nickName}
+		select * from tb_member where nickName=#{nickName}
 	</select>
 	
 	<!-- 회원가입 -->
 	<insert id="insert" parameterType="member">
-		insert into member2 values (#{id}, #{password}, #{email}, #{nickName})
+		insert into tb_member values (#{id}, #{password}, #{email}, #{nickName})
 	</insert>
 	
 </mapper>
