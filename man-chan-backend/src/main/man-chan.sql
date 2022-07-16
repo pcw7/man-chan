@@ -48,4 +48,5 @@ create table tb_like (
 drop sequence seq_like_id;
 create sequence seq_like_id;
 
+
 select * from member2;
