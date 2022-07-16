@@ -24,7 +24,7 @@
 	function nickNameChk() {
 		if (!frm.nickName.value) {
 			alert("별명을 입력한 후에 체크하세요.");
-			frm.nickName.focus();
+			// frm.nickName.focus();
 			return false;
 		}
 		$.post('nickNameChk.do', "nickName="+frm.nickName.value, function(data) {
@@ -119,7 +119,7 @@
 	<p>아이디</p>
 	<input type="text" name="id" required="required" autofocus="autofocus">
 	<input type="button" value="중복확인" onclick="idChk()">
-	<div class="chkDiv" id="idChk1"></div>
+	<div id="idChk1"></div>
 	<p>비밀번호</p>
 	<input type="password" name="password" id="password" required="required" onKeyup="pwChk(this)" style="ime-mode:disabled;">
 	<div id="pwChk1"></div>	
@@ -134,7 +134,7 @@
 	<div id="nickNameChk1"></div>
 	<input type="submit" value="회원가입">
 </form>
-<input class="link" type="button" onclick="location.href='loginForm.do';" value="로그인">
+<input type="button" onclick="location.href='loginForm.do';" value="로그인">
 </div>
 </div>
 </body>

@@ -26,6 +26,11 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@RequestMapping("main")
+	public String main() {
+		return "main";
+	}
+	
 	// 회원가입 입력
 	@RequestMapping("joinForm")
 	public String joinForm() {
@@ -72,6 +77,27 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 		return "join";
+	}
+	
+	// 로그인 입력
+	@RequestMapping("loginForm")
+	public String loginForm() {
+		return "loginForm";
+	}
+		
+	// 로그인 결과
+	@RequestMapping("login")
+	public String login(Member member, Model model, HttpSession session) {
+		int result = 0; // 암호가 다름
+		Member member2 = ms.select(member.getId());
+		if (member2 == null)
+			result = -1;  // 없는 아이디
+		else if (passwordEncoder.matches(member.getPassword(), member2.getPassword())) {
+			result = 1; // 로그인 성공
+			session.setAttribute("id", member.getId());
+		}
+		model.addAttribute("result", result);
+		return "login";
 	}
 	
 }
