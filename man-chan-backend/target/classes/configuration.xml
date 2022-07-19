@@ -4,8 +4,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="member" type="com.ch.mc.model.Member" />
+		<typeAlias alias="article" type="com.ch.mc.model.Article" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="member.xml" />
+		<mapper resource="article.xml" />
 	</mappers>
 </configuration>
