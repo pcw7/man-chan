@@ -4,7 +4,8 @@
 <title>Insert title here</title>
 </head><body>
 
-${id } 님 로그인 성공
+${id } 님 로그인 성공<br>
+<a href="insertForm.do?ano=0">게시글 입력</a>
 
 </body>
 </html>

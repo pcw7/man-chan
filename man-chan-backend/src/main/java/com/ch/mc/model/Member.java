@@ -1,7 +1,5 @@
 package com.ch.mc.model;
 
-import java.sql.Date;
-
 import lombok.Data;
 
 @Data
