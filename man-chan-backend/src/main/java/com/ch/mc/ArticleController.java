@@ -2,7 +2,6 @@ package com.ch.mc;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ch.mc.model.Article;
 import com.ch.mc.model.Member;
@@ -36,10 +38,22 @@ public class ArticleController {
 	}
 	
 	@RequestMapping("insert")
-	public String insert(Article article, HttpSession session, Model model) throws IOException {
+	public String insert(@RequestParam("file") MultipartFile mf, Article article, HttpSession session, Model model) throws IOException {
+        String fileName = mf.getOriginalFilename(); // 원래 파일명
+        System.out.println(fileName);
+		String real = session.getServletContext().getRealPath("/resources/upload");
+		FileOutputStream fos = new FileOutputStream(new File(real+"/"+fileName));
+		fos.write(mf.getBytes());
+		fos.close();
+		int fileSize = (int)mf.getSize();
+		
 		String member_id = (String) session.getAttribute("id");
 		article.setMember_id(member_id);
+		article.setThumbnail(fileName);
         int result = as.insert(article);
+//        model.addAttribute("fileName", fileName);
+//        model.addAttribute("fileSize", fileSize);
+//        model.addAttribute("article", article);
         model.addAttribute("result", result);
         return "insert"; 
     }
