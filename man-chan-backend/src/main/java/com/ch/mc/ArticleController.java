@@ -2,6 +2,7 @@ package com.ch.mc;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,13 @@ public class ArticleController {
 	@Autowired
 	private MemberService ms;
 	
+	@RequestMapping("home")
+	public String main(String fileName, String fileSize, Model model) {
+		model.addAttribute("fileName", fileName);
+		model.addAttribute("fileSize", fileSize);
+		return "home";
+	}
+	
 	@RequestMapping("insertForm")
 	public String insertForm(int ano, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -39,8 +47,8 @@ public class ArticleController {
 	
 	@RequestMapping("insert")
 	public String insert(@RequestParam("file") MultipartFile mf, Article article, HttpSession session, Model model) throws IOException {
-        String fileName = mf.getOriginalFilename(); // 원래 파일명
-        System.out.println(fileName);
+		Date today = new Date();
+		String fileName = today.getTime() + "_" +mf.getOriginalFilename();
 		String real = session.getServletContext().getRealPath("/resources/upload");
 		FileOutputStream fos = new FileOutputStream(new File(real+"/"+fileName));
 		fos.write(mf.getBytes());
@@ -51,9 +59,9 @@ public class ArticleController {
 		article.setMember_id(member_id);
 		article.setThumbnail(fileName);
         int result = as.insert(article);
-//        model.addAttribute("fileName", fileName);
-//        model.addAttribute("fileSize", fileSize);
-//        model.addAttribute("article", article);
+        model.addAttribute("fileName", fileName);
+        model.addAttribute("fileSize", fileSize);
+        model.addAttribute("article", article);
         model.addAttribute("result", result);
         return "insert"; 
     }
