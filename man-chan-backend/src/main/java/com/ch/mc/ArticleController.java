@@ -59,6 +59,7 @@ public class ArticleController {
 		article.setMember_id(member_id);
 		article.setThumbnail(fileName);
         int result = as.insert(article);
+        System.out.println(article);
         model.addAttribute("fileName", fileName);
         model.addAttribute("fileSize", fileSize);
         model.addAttribute("article", article);
