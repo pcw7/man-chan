@@ -7,7 +7,7 @@
 
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
-		location.href="home.do?fileName=${fileName}&fileSize=${fileSize}"; 
+		location.href="home.do?fileName=${fileName}&fileSize=${fileSize}&article=${article}"; 
 	</script>
 </c:if>
 <c:if test="${result == 0 }">
