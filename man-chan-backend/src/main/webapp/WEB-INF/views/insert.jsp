@@ -5,17 +5,13 @@
 <title>Insert title here</title>
 </head><body>
 
-<c:if test="${result > 0 }">
-	<script type="text/javascript">
-		location.href="home.do?fileName=${fileName}&fileSize=${fileSize}&article=${article}"; 
-	</script>
-</c:if>
-<c:if test="${result == 0 }">
-	<script type="text/javascript">
-		alert("작성 실패 ㅠㅠ");
-		history.back();
-	</script>
-</c:if>
+${id } 님 게시글 작성이 성공하였습니다.<br>
+파일이름 : ${fileName } <br>
+파일크기 : ${fileSize } <br>
+썸네일 : 
+<img alt="${article.thumbnail }" src="${article.thumbnail}" width="130" height="130"> <br>
+
+<a href="insertForm.do?ano=0">게시글 입력</a>
 
 </body>
 </html>
