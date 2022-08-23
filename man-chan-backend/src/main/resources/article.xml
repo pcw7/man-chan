@@ -5,5 +5,8 @@
 	<insert id="insert" parameterType="article">
 		insert into tb_article values (seq_article_ano.nextval, #{title}, #{content}, sysdate, sysdate, 0, #{member_id}, #{thumbnail})
 	</insert>
+	<select id="list" resultType="article">
+		select * from tb_article 
+	</select>
 	
 </mapper>

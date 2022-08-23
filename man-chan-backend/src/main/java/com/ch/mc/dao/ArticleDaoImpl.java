@@ -20,4 +20,9 @@ public class ArticleDaoImpl implements ArticleDao{
 		return sst.insert("articlens.insert", article);
 	}
 
+	@Override
+	public List<Article> list() {
+		return sst.selectList("articlens.list");
+	}
+
 }

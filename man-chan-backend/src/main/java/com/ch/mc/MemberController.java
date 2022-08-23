@@ -21,11 +21,6 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	@RequestMapping("main")
-	public String main() {
-		return "main";
-	}
-	
 	// 회원가입 입력
 	@RequestMapping("joinForm")
 	public String joinForm() {

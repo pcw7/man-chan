@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,13 @@ public class ArticleController {
 	private ArticleService as;
 	@Autowired
 	private MemberService ms;
+	
+	@RequestMapping("list")
+	public String list(Model model) {
+		List<Article> list = as.list();
+		model.addAttribute("list", list);
+		return "list";
+	}
 	
 	@RequestMapping("insertForm")
 	public String insertForm(int ano, Model model, HttpServletRequest request) {
