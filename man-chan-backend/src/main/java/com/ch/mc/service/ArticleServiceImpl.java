@@ -18,4 +18,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return ad.insert(article);
 	}
 
+	@Override
+	public List<Article> list() {
+		return ad.list();
+	}
+
 }
